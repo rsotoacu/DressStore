@@ -4,8 +4,9 @@
  * Module dependencies.
  */
 
-var app = require('./app');
-var debug = require('debug')('dressstore:server');
+var configDB = require('./config/db');
+var app = require('./config/express');
+var debug = require('debug')('comp229006:server');
 var http = require('http');
 
 /**
@@ -18,7 +19,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
+var db = configDB();
 var server = http.createServer(app);
 
 /**
@@ -86,5 +87,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+
+  console.log('==== The app is running on http://localhost:' + port );
   debug('Listening on ' + bind);
 }
