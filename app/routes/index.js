@@ -6,6 +6,4 @@ let indexController = require('../controllers/index');
 /* GET home page. */
 router.get('/', indexController.home);
 
-router.get('/products', indexController.prd);
-
 module.exports = router;
